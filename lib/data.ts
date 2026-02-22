@@ -63,6 +63,15 @@ export const projects: Project[] = [
     tags: ["Flutter", "Dart", "AI Vision", "Mobile"],
   },
   {
+    name: "Ember",
+    description: "Daily affirmation & reflection app with streak tracking and premium journaling.",
+    longDescription:
+      "A mobile app for daily inspirational quotes, personal journaling, and streak tracking. Features anonymous accounts, Apple Sign-In, cloud backup, and an optional premium tier with unlimited browsing, AI-personalized prompts, and custom collections.",
+    status: "shipped",
+    tags: ["Flutter", "Dart", "Firebase", "Mobile"],
+    link: "https://caqlayan.dev/ember",
+  },
+  {
     name: "TasteLog",
     description: "Personal food discovery & logging app.",
     longDescription:
