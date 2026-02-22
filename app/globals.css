@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ─── Dark mode via .dark class (next-themes) ─────────────────────── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design tokens ───────────────────────────────────────────────── */
+:root {
+  --c-bg:       #fafafa;
+  --c-card:     #f0f0f0;
+  --c-border:   #e0e0e0;
+  --c-text:     #0a0a0a;
+  --c-muted:    #777777;
+  --c-accent:   #16a34a;
+  --c-accent-2: #dcfce7;
+  --c-amber:    #d97706;
+}
+
+.dark {
+  --c-bg:       #0a0a0a;
+  --c-card:     #111111;
+  --c-border:   #1e1e1e;
+  --c-text:     #e5e5e5;
+  --c-muted:    #555555;
+  --c-accent:   #22c55e;
+  --c-accent-2: #052e16;
+  --c-amber:    #f59e0b;
+}
+
+/* ─── Register as Tailwind utilities ──────────────────────────────── */
+@theme inline {
+  --color-bg:       var(--c-bg);
+  --color-card:     var(--c-card);
+  --color-border-t: var(--c-border);
+  --color-body:     var(--c-text);
+  --color-muted:    var(--c-muted);
+  --color-accent:   var(--c-accent);
+  --color-accent2:  var(--c-accent-2);
+  --color-amber:    var(--c-amber);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-muted); }
+
+/* ─── Cursor blink ─────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Section fade-in utility ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
