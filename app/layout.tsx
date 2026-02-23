@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://caqlayan.dev"),
   title: "Arda Caglayan Ercan — Next.js & Mobile App Developer",
   description:
     "Full-stack engineer specializing in Next.js web apps and Flutter mobile apps. 110,000+ downloads shipped. Available for freelance.",
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     title: "Arda Caglayan Ercan — Next.js & Mobile App Developer",
     description:
       "Full-stack engineer specializing in Next.js web apps and Flutter mobile apps. 110,000+ downloads shipped.",
+    url: "https://caqlayan.dev",
     type: "website",
   },
 };
