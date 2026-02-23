@@ -85,7 +85,7 @@ export const projects: Project[] = [
     tags: ["Flutter", "Next.js", "Supabase"],
   },
   {
-    name: "TasteeBridge",
+    name: "TasteBridge",
     description: "Food-based social connection and discovery platform.",
     longDescription:
       "A social platform connecting people through shared food tastes and restaurant recommendations. Built as a companion product to TasteLog, focusing on community and discovery features.",
