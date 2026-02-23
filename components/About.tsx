@@ -30,12 +30,17 @@ export function About() {
             <span>about.md</span>
           </div>
 
-          <p
-            className="text-base leading-relaxed"
-            style={{ color: "var(--c-text)" }}
-          >
-            {person.bio}
-          </p>
+          <div className="flex flex-col gap-4">
+            {person.bio.split("\n\n").map((paragraph, i) => (
+              <p
+                key={i}
+                className="text-base leading-relaxed"
+                style={{ color: "var(--c-text)" }}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
 
           <div
             className="mt-6 pt-6 font-mono text-xs flex flex-wrap gap-4"

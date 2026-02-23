@@ -1,29 +1,34 @@
 export const person = {
   name: "Arda Caglayan Ercan",
   title: "Next.js & Mobile App Developer",
-  tagline: "Building web apps and mobile products that people actually use.",
-  bio: "I'm a full-stack engineer specializing in Next.js web apps and Flutter mobile apps. I've built and shipped apps downloaded by 110,000+ people, and I bring that same indie founder energy to every freelance project. Currently freelancing and building my own products — one feature at a time.",
+  tagline: "Web, mobile, backend — I build the whole product and ship it fast.",
+  bio: "I've been drawn to computers my whole life — not just to understand them, but to build things with them. Things I'd actually want to use. That instinct led me to ship a Flutter app that went viral: 110,000+ downloads, real scaling challenges, and a hard lesson that the only metric that matters is shipping.\n\nNow I work with early-stage startups as a full-stack developer — covering Next.js on the web and Flutter on mobile. No handoffs, no coordination overhead. If you need someone who moves fast, owns the whole stack, and has actually felt the pressure of a product taking off, that's me.",
   github: "https://github.com/caqlayan",
   upwork: "https://www.upwork.com/freelancers/caqlayan",
   email: "hello@caqlayan.dev",
 };
 
-export const skills = [
-  "TypeScript",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Flutter",
-  "Dart",
-  "Node.js",
-  "NestJS",
-  "Express",
-  "REST APIs",
-  "PostgreSQL",
-  "Firebase",
-  "Supabase",
-  "Git",
-  "Vercel",
+export const skillGroups = [
+  {
+    category: "frontend",
+    skills: ["TypeScript", "JavaScript", "React", "Next.js"],
+  },
+  {
+    category: "mobile",
+    skills: ["Flutter", "Dart"],
+  },
+  {
+    category: "backend",
+    skills: ["Node.js", "NestJS", "Express", "REST APIs"],
+  },
+  {
+    category: "data & cloud",
+    skills: ["PostgreSQL", "Firebase", "Supabase"],
+  },
+  {
+    category: "tools",
+    skills: ["Git", "Vercel"],
+  },
 ];
 
 export type ProjectStatus = "shipped" | "in-progress";

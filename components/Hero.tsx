@@ -1,11 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useInView } from "framer-motion";
 import { person } from "@/lib/data";
 
 export function Hero() {
   const [displayed, setDisplayed] = useState("");
   const [typingDone, setTypingDone] = useState(false);
+  const [count, setCount] = useState(0);
+  const statRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(statRef, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    const target = 110000;
+    const duration = 1800;
+    const steps = 80;
+    const interval = duration / steps;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      // ease-out: fast start, slow finish
+      const progress = 1 - Math.pow(1 - step / steps, 3);
+      setCount(Math.floor(progress * target));
+      if (step >= steps) {
+        setCount(target);
+        clearInterval(timer);
+      }
+    }, interval);
+    return () => clearInterval(timer);
+  }, [isInView]);
 
   useEffect(() => {
     const text = person.tagline;
@@ -37,24 +62,36 @@ export function Hero() {
           <p className="font-mono text-sm mb-4" style={{ color: "var(--c-muted)" }}>
             <span style={{ color: "var(--c-accent)" }}>$</span> whoami
           </p>
-          <h1
-            className="font-mono font-bold leading-tight tracking-tight"
-            style={{
-              fontSize: "clamp(2.2rem, 6vw, 4.5rem)",
-              color: "var(--c-text)",
-            }}
-          >
-            {person.name}
-          </h1>
-          <p
-            className="font-mono mt-2 font-normal"
-            style={{
-              fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
-              color: "var(--c-accent)",
-            }}
-          >
-            {person.title}
-          </p>
+          <div className="flex items-center gap-6">
+            <Image
+              src="/avatar.png"
+              alt="Arda pixel art avatar"
+              width={120}
+              height={120}
+              className="shrink-0"
+              style={{ imageRendering: "pixelated" }}
+            />
+            <div>
+              <h1
+                className="font-mono font-bold leading-tight tracking-tight"
+                style={{
+                  fontSize: "clamp(2.2rem, 6vw, 4.5rem)",
+                  color: "var(--c-text)",
+                }}
+              >
+                {person.name}
+              </h1>
+              <p
+                className="font-mono mt-2 font-normal"
+                style={{
+                  fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
+                  color: "var(--c-accent)",
+                }}
+              >
+                {person.title}
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Typewriter block */}
@@ -79,6 +116,7 @@ export function Hero() {
         {/* Stats badge */}
         <div className="mb-12 fade-up" style={{ animationDelay: "400ms" }}>
           <span
+            ref={statRef}
             className="font-mono text-xs px-3 py-1.5 rounded-sm border inline-flex items-center gap-2"
             style={{
               borderColor: "var(--c-accent)",
@@ -87,7 +125,7 @@ export function Hero() {
             }}
           >
             <span>▲</span>
-            <span>110,000+ downloads shipped</span>
+            <span>{count.toLocaleString()}+ downloads shipped</span>
           </span>
         </div>
 
